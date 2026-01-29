@@ -1,6 +1,5 @@
 body {
     background: #3B3561;
-    border: 15px #071013;
     color: rgb(255, 253, 253);
     padding: 10px;
     font-family: Arial, sans-serrif;
@@ -16,7 +15,6 @@ body {
 /* navigation menu */
 nav {
     background: rgb(0, 0, 0);
-    border: 20px;
     margin: 0 auto;
     display: flex;
     padding: 10px;
@@ -55,9 +53,9 @@ a {
 /* main container area beneath menu */
 main {
     background: #577399;
-    border: 10px; #071013;
     display: flex;
     margin-top: 20px;
+    border: 10px;
 }
 
 .sidebar {
@@ -80,7 +78,7 @@ main {
 
 /* intrests section styles */
 #interests {
-    border: 8px silver ridge;
+    border: 10px silver ridge;
     padding: 8px;
     margin-top: 20px;
 
