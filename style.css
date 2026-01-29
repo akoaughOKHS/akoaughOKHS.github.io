@@ -16,7 +16,7 @@ body {
 /* navigation menu */
 nav {
     background: rgb(0, 0, 0);
-    border: 20px #FBFAF8;
+    border: 20px;
     margin: 0 auto;
     display: flex;
     padding: 10px;
@@ -55,7 +55,7 @@ a {
 /* main container area beneath menu */
 main {
     background: #577399;
-    border: 10px #071013;
+    border: 10px; #071013;
     display: flex;
     margin-top: 20px;
 }
