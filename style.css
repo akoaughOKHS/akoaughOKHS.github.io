@@ -66,11 +66,11 @@ main {
 
 }
 
-.sidebar-img {
+.sidebar-img { 
+    border: 6px #fffDF7 ridge;
     width: 75px;
     height: 15px;
-    border: 10px white ridge;
-
+    
 }
 
 .content {
