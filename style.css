@@ -90,3 +90,20 @@ h2, h3 {
     margin: opx;
 }
 
+/* Portfolio styles */
+.content h1 {
+    color: black;
+}
+
+#portfolio {
+    list-style-type: none;
+    padding-left: 0;   
+}
+
+#portfolio li {
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
