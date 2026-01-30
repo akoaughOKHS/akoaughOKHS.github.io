@@ -69,6 +69,7 @@ main {
 .sidebar-img {
     width: 75px;
     height: 15px;
+    border: 10px white ridge;
 
 }
 
