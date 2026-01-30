@@ -1,7 +1,7 @@
 body {
-    background: #3B3561;
+    background-image:linear-gradient(to top right,#3B3561,#8DA7BE, #CDE6F5 );
     color: rgb(255, 253, 253);
-    padding: 10px;
+    padding: 115px;
     font-family: Arial, sans-serrif;
 
 }
@@ -101,7 +101,8 @@ h2, h3 {
 }
 
 #portfolio li {
-    background: #fff;
+    background: #1098d6;
+    border: 4px #283ce8 ridge;
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 10px;
@@ -113,7 +114,7 @@ h2, h3 {
 
 #portfolio a {
     text-decoration: none;
-    color: #454545;
+    color: #466365;
 }
 
 
