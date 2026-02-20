@@ -32,29 +32,29 @@ $(function () {
 
     // TODO 2 - Create Platforms
 
-    createPlatform(0, 250, 275, 20);
-    createPlatform(410, 0, 20, 600);
-    createPlatform(0, 650, 10, 15);
-    createPlatform(410, 100, 245, 20);
-    createPlatform(750, 530, 25, 15);
-    createPlatform(900, 586,275, 20);
-    createPlatform(665, 405, 100, 20);
-    createPlatform(870, 300, 275, 20);
+    createPlatform(0, 250, 275, 20, "darkblue");
+    createPlatform(410, 0, 20, 600, "darkblue");
+    createPlatform(0, 650, 10, 15, "darkblue");
+    createPlatform(410, 100, 245, 20, "darkblue");
+    createPlatform(750, 530, 25, 15, "darkblue");
+    createPlatform(900, 586,275, 20, "darkblue");
+    createPlatform(665, 405, 100, 20, "darkblue");
+    createPlatform(870, 300, 275, 20, "darkblue");
     createPlatform(1250, 250, 5, 5, "lightblue");
     createPlatform(750, 100, 5, 5, "lightblue");
     createPlatform(1500, 105, 270, 5, "lightblue");
-    createPlatform(1340, 205, 100, 5);
-    createPlatform(450, 300, 100, 3);
-    createPlatform(1180, 600, 20,100 );
-    createPlatform(650, 637, 234, 20);
-    createPlatform(0, 520, 10, 10);
+    createPlatform(1340, 205, 100, 5, "darkblue");
+    createPlatform(450, 300, 100, 3, "darkblue");
+    createPlatform(1180, 600, 20,100, "darkblue");
+    createPlatform(650, 637, 234, 20,"darkblue") ;
+    createPlatform(0, 520, 10, 10, "darkblue");
     
 
     // TODO 3 - Create Collectables
-    createCollectable("database", 100, 300);
-    createCollectable("database", 500, 260);
-    createCollectable("database", 1100, 648);
-    createCollectable("database", 1350, 160);
+    createCollectable("cortez", 100, 300);
+    createCollectable("cortez", 500, 260);
+    createCollectable("cortez", 1100, 648);
+    createCollectable("cortez", 1350, 160);
     
     // TODO 4 - Create Cannons
     createCannon("right", 430, 2000);
