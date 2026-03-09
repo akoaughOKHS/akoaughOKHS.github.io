@@ -8,7 +8,11 @@
       .box {
         width: 70px;
         height: 70px;
-        background-color: teal;
+        background-image: url(spaceship1.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 150%;
         font-size: 300%;
         text-align: center;
         user-select: none;
@@ -79,7 +83,7 @@
            var positionX = 0;   
            var points = 0;          
            var speed = 10;
-           var positionY;
+           var positionY = 0;
            var boardHeight = jQuery(window).height(); 
            var speedY = 10;
            var randNum = Math.random() * boardWidth;
@@ -93,23 +97,19 @@
          */
         function update() {
          moveBoxTo(positionX, positionY);
-         
-         positionX = positionX + speed;
-         positionY = positionY + speed;
-
+         positionX += speed;
+         positionY += speedY;
         if (positionX >= boardWidth) {
           speed *= -1;
         }
-        
-        else if (positionX < 0) {
+        if (positionX < 0) {
           speed *= -1;
         }
         
         if (positionY > boardHeight) {
           speedY = speedY * -1;
         }
-        
-        else if (positionY < 0) {
+        if (positionY < 0) {
           speedY = speedY * -1;
         }
 
@@ -123,8 +123,8 @@
          * - move the box to the left side of the screen.
          */
         function handleBoxClick() {
-          positionX = 0;
-          positionY = 0;
+          positionX = randNum;
+          positionY = 10;
           changeBoxText(points)
           points++;
           speed = 3 * points + 10 
