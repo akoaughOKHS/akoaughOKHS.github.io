@@ -1,7 +1,8 @@
 body {
-    background-image:linear-gradient(to top right,#3B3561,#8DA7BE, #CDE6F5 );
+    background-image: url("https://images.steamusercontent.com/ugc/49862818601306839/EB84A44C964C4598F7239B1DE6A95DE8E70CF107/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false");
+    background-size: cover;
     color: rgb(255, 253, 253);
-    padding: 115px;
+    padding: 120px;
     font-family: Arial, sans-serrif;
 
 }
@@ -15,7 +16,7 @@ body {
 /* navigation menu */
 nav {
     background: rgb(0, 0, 0);
-    border: 14px #FFFDF7 ridge;
+    border: 14px silver ridge;
     margin: 0 auto;
     display: flex;
     padding: 10px;
@@ -54,8 +55,8 @@ a {
 
 /* main container area beneath menu */
 main {
-    background: #577399;
-    border: 14px black ridge;
+    background: #000000;
+    border: 14px silver ridge;
     display: flex;
     margin-top: 20px;
     
@@ -69,8 +70,8 @@ main {
 
 .sidebar-img { 
     border: 6px #fffDF7 ridge;
-    width: 75px;
-    height: 15px;
+    width: 15px;
+    height: 10px;
     
 }
 

@@ -82,11 +82,11 @@
            var positionY;
            var boardHeight = jQuery(window).height(); 
            var speedY = 10;
-           var randNum = Math.random() * 100;
+           var randNum = Math.random() * boardWidth;
            var colorStr = "rgb(50, 25, 250)";
            var randomNumberBetween0and10 = Math.random() * 10;
            var interval = setInterval(update, 50);
-        /**
+           /**
          * This Function will be called 20 times/second.
          * Each time it is called, it should move the Box to a new location.
          * If the box drifts off the screen, turn it around!
@@ -101,7 +101,7 @@
           speed *= -1;
         }
         
-        if (positionX < 0) {
+        else if (positionX < 0) {
           speed *= -1;
         }
         
@@ -109,7 +109,7 @@
           speedY = speedY * -1;
         }
         
-        if (positionY < 0) {
+        else if (positionY < 0) {
           speedY = speedY * -1;
         }
 
