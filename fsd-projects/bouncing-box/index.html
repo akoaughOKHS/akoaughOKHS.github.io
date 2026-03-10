@@ -81,7 +81,7 @@
         // TODO 2 - Variable declarations
 
         var positionX = 0;   
-        var points = 1;          
+        var points = 0;          
         var speed = 10;
         var positionY = 0;
         var boardHeight = jQuery(window).height(); 
@@ -123,8 +123,8 @@
         function handleBoxClick() {
           positionX = randNum;
           positionY = 10;
+          points += 1;
           changeBoxText(points);
-          points++;
           speed = 3 * points + 10 ;
           speedY = 3 * points + 10;
         }
