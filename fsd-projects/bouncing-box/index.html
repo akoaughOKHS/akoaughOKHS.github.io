@@ -81,7 +81,7 @@
         // TODO 2 - Variable declarations
 
            var positionX = 0;   
-           var points = 0;          
+           var points = 1;          
            var speed = 10;
            var positionY = 0;
            var boardHeight = jQuery(window).height(); 
@@ -99,17 +99,18 @@
          moveBoxTo(positionX, positionY);
          positionX += speed;
          positionY += speedY;
-        if (positionX >= boardWidth) {
+          if (positionX >= boardWidth) {
           speed *= -1;
         }
-        if (positionX < 0) {
+          if (positionX < 0) {
           speed *= -1;
         }
         
-        if (positionY > boardHeight) {
+          if (positionY > boardHeight) {
           speedY = speedY * -1;
         }
-        if (positionY < 0) {
+        
+          if (positionY < 0) {
           speedY = speedY * -1;
         }
 
@@ -133,9 +134,8 @@
 
         }
 
-        function endGame() {
-          clearInterval(interval);
-        }
+        
+        
         
       })();
     </script>
