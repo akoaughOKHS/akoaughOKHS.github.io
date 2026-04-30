@@ -30,6 +30,14 @@ var init = function (window) {
             view.addChild(circle);
             circles.push(circle);
         }
+        Gamification.init({
+          canvas: canvas,
+          view: view,
+          draw: draw,
+          circles: circles,
+          game: game
+        });
+
 
 
         // TODO 3 : Call the drawCircle() function
@@ -63,8 +71,11 @@ var init = function (window) {
             // TODO 8 / TODO 9 : Iterate over the array
            for (var i = 0; i < circles.length; i++) {
              physikz.updatePosition(circles[i]);
-             game.checkCirclesPosition(circles[i]);
+             game.checkCirclePosition(circles[i]);
            }
+
+           Gamification.update();
+
         }
     
         /* 
@@ -80,13 +91,13 @@ var init = function (window) {
             }
             
             // TODO 6 : YOUR CODE STARTS HERE //////////////////////
-               else if (circle.y > canavs.height) {
-                circle.y = 0;
+               else if (circle.y > canvas.height) {
+                circle.x = 0;
                } 
-               if (circle.y < canvas.height) {
+               if (circle.y > canvas.height) {
                 circle.y = 0;
                } else if ( circle.y < 0) {
-                 circle.y = canavs.height;
+                 circle.y = canvas.height;
                } 
                 
                
