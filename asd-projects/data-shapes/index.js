@@ -35,6 +35,8 @@
   /////////////////////////////////////////////////
 
   // TODO 1: create a new shape object and add it to the array
+  
+  // Todo 0 complete 
   var shape = {
    color: "blue",
    shape: "circle",
@@ -42,7 +44,7 @@
   };
   dataShapes.push(shape);
 
-// Todo 0 complete
+
   // TODO 2: add a new property to all data shapes
   for (var i = 0; i < dataShapes.length; i++) {
     var currentShape = dataShapes[i];
@@ -67,10 +69,18 @@
   }
 
   // TODO 5-a: add a function that handles the bad display type
-  function handleBad(data, repeat) {
+  /* function handleBad(data, repeat) {
     repeat += 1;
     setBackgroundWithMixed(data, repeat);
-    animationDetails.displayType = 3;
+    animationDetails.displayType = 3; 
+  } */
+
+    function handleBad(data, repeat) {
+      currentIndex = Math.floor(Math.random() * dataShapes.length - 1);
+      resetDisplay();
+      repeat += 1;
+      setBackgroundWithMixed(data, repeat);
+      animationDetails.displayType = 3;
   }
 
   /////////////////////////////////////////////////
