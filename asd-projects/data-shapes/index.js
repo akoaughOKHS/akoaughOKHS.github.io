@@ -54,8 +54,8 @@
       currentShape["goodBehavior"] = "blink";
     } else  {
       currentShape["goodBehavior"] = "spin";
-    };
-  };
+    }
+  }
   // TODO 3-a: add a function that handles the static display type
   function handleStatic(data) {
     setBackgroundWithObject(data);
@@ -81,7 +81,7 @@
       repeat += 1;
       setBackgroundWithMixed(data, repeat);
       animationDetails.displayType = 3;
-  }
+    }
 
   /////////////////////////////////////////////////
   // BUTTON HANDLERS BELOW HERE (3-b, 4-b, 5-b) ///
