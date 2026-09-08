@@ -105,7 +105,7 @@ $(document).ready(function () {
     // loop over the ghosts array. We use the maxGhosts variable instead of ghosts.length
     // to make seeing issues in the debugger slightly easier (in practice, you should use
     // ghosts.length, but do NOT change it here)
-    for (var i = 0; i <= ghosts.length - 1; i++) {
+    for (var i = 0; i <= maxGhosts; i++) {
       var ghost = ghosts[i];
 
       // move the ghost
@@ -158,7 +158,7 @@ $(document).ready(function () {
 
   // this redraws the ghost's position on the screen
   function updateGhostOnScreen(ghost) {
-    maxGhosts = 1;
+  
 
     // these lines redraw the ghost's position
     $(ghost.id).css("left", ghost.x);
