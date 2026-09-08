@@ -111,7 +111,6 @@ Your project is graded based on completion of each major step. Make sure each TO
 1. **Open your `index.html` file.**
 
 2. **Inside the `<body>` section**, add the following three elements:
-
    - A `<div>` with the ID `board`
    - An `<h1>` with the ID `score` and the text “Score: 0”
    - Another `<h1>` with the ID `highScore` and the text “High Score: 0”
@@ -526,7 +525,6 @@ The `setInterval()` function makes that happen repeatedly and smoothly, giving u
 > ⌨️ This saves the key code of the last key pressed and logs it to the console so you can check if input is working correctly.
 
 3. Open your game in the browser and press the arrow keys. In the console, you should see numbers like:
-
    - `37` for Left
    - `38` for Up
    - `39` for Right
@@ -598,7 +596,7 @@ The `setInterval()` function makes that happen repeatedly and smoothly, giving u
 >   snakeSquare.column,
 >   "to",
 >   nextRow,
->   nextColumn
+>   nextColumn,
 > );
 > ```
 >
@@ -654,10 +652,10 @@ The `setInterval()` function makes that happen repeatedly and smoothly, giving u
 
 If your snake isn’t moving as expected, try this:
 
-   ```js
-   console.log("Head is at:", snake.head.row, snake.head.column);
-   console.log("Direction:", snake.head.direction);
-   ```
+```js
+console.log("Head is at:", snake.head.row, snake.head.column);
+console.log("Direction:", snake.head.direction);
+```
 
 > Watch the console as you press arrow keys — you should see the direction update and the position change accordingly. If you don't, then check where those values are being set and updated in your code.
 
@@ -680,28 +678,27 @@ If your snake isn’t moving as expected, try this:
    - Set `bodyA`'s `row`, `column`, and `direction` properties to match `bodyB`'s.
 
 4. **Test your function.**
-
    - Below the function, add the following code to test it:
 
-      ```js
-      var bodyA = { row: 5, column: 5, direction: "right" };
-      var bodyB = { row: 6, column: 5, direction: "down" };
-      console.log(`before moving, body A: ${JSON.stringify(bodyA)}`); // Should log: { row: 5, column: 5, direction: "right" }
-      moveBodyAToBodyB(bodyA, bodyB);
-      console.log(`after moving, body A: ${JSON.stringify(bodyA)}`); // Should log: { row: 6, column: 5, direction: "down" } || Note the match with bodyB
-      ```
+     ```js
+     var bodyA = { row: 5, column: 5, direction: "right" };
+     var bodyB = { row: 6, column: 5, direction: "down" };
+     console.log(`before moving, body A: ${JSON.stringify(bodyA)}`); // Should log: { row: 5, column: 5, direction: "right" }
+     moveBodyAToBodyB(bodyA, bodyB);
+     console.log(`after moving, body A: ${JSON.stringify(bodyA)}`); // Should log: { row: 6, column: 5, direction: "down" } || Note the match with bodyB
+     ```
 
    - If the output matches, your function is most likely working!
 
    - Next, delete the test code and replace it with the following:
 
-      ```js
-      console.log("Moving body A to body B...");
-      setTimeout(() => {
-        moveBodyAToBodyB(snake.body[1], snake.head);
-        repositionSquare(snake.body[1]);
-      }, 2_000);
-      ```
+     ```js
+     console.log("Moving body A to body B...");
+     setTimeout(() => {
+       moveBodyAToBodyB(snake.body[1], snake.head);
+       repositionSquare(snake.body[1]);
+     }, 2_000);
+     ```
 
 - This will move the second segment of the snake's body to the position of the head after 2 seconds.
 - If your function is working correctly, you should see the second segment of the snake's body move to the position of the head after 2 seconds after refreshing your live server tab. There will now be a gap between the head and the third segment of the snake's body after this happens.
@@ -746,7 +743,6 @@ When moving the body, you need to loop **backwards** through the array stored in
 > 🧠 You are making each square “chase” the one ahead of it — just like how a real snake’s body moves.
 
 3. Replace each `???` with the code that will correctly access the current and next segments of the snake's body.
-
    - **HINT**: Because `snake.body` is an array, you can use the index to access each segment, such as: `snake.body[0]` for the first segment and `snake.body[snake.body.length - 1]` for the last segment.
    - However, you shouldn't hard code the index, and instead use the loop variable to access the segments dynamically.
 
@@ -793,7 +789,6 @@ Below are two images. The first shows the snake movement with correct backward l
 1. **Find the `hasHitWall()` function**. This function should return `true` if the snake’s head is outside the bounds of the game board, and `false` otherwise.
 
 2. Inside the function, check whether the **head's row or column** is beyond the board limits:
-
    - `snake.head.row` should be between `0` and `ROWS - 1`
    - `snake.head.column` should be between `0` and `COLUMNS - 1`
 
@@ -959,16 +954,16 @@ This will turn your snake into a moving rainbow!
 
 - Create a list (array) called `colors`:
 
-   ```js
-   ["red", "orange", "yellow", "green", "blue", "purple"];
-   ```
+  ```js
+  ["red", "orange", "yellow", "green", "blue", "purple"];
+  ```
 
 - Add a new variable (like `colorIndex`) to track which color comes next
 - After you call `makeSnakeSquare()`, immediately apply the background color using:
 
-   ```js
-   snake.tail.element.css("backgroundColor", colors[colorIndex]);
-   ```
+  ```js
+  snake.tail.element.css("backgroundColor", colors[colorIndex]);
+  ```
 
 - After each new square is created, increase `colorIndex`. If it goes past the end of the list, loop it back to 0.
   - Bonus: use the modulo operator (`%`) to wrap around the index.
