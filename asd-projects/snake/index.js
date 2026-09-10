@@ -119,6 +119,15 @@ function moveSnake() {
     stored in the Array snake.body and each part knows its current 
     column/row properties. 
   */
+ for (let i = snake.body.length - 1; i > 0; i--) {
+
+    var currentSnakeSquare = snake.body[i];
+    var snakeSquareInFront = snake.body[i - 1];
+    
+    moveBodyAToBodyB(currentSnakeSquare, snakeSquareInFront);
+
+    repositionSquare(currentSnakeSquare);
+  }
 
   //Before moving the head, check for a new direction from the keyboard input
   checkForNewDirection();
@@ -145,13 +154,14 @@ function moveSnake() {
 
 // TODO 9: Create a new helper function
 function moveBodyAToBodyB(bodyA, bodyB){
-bodyA = bodyB;
-var bodyA = { row: 5, column: 5, direction: "right" };
-var bodyB = { row: 6, column: 5, direction: "down" };
-console.log(`before moving, body A: ${JSON.stringify(bodyA)}`);
-moveBodyAToBodyB(bodyA, bodyB);
-console.log(`after moving, body A: ${JSON.stringify(bodyA)}`);
+  bodyA.row = bodyB.row; 
+  bodyA.column = bodyB.column;
+  bodyA.direction = bodyB.direction;
 }
+setTimeout(() => {
+  moveBodyAToBodyB(snake.body[1], snake.head);
+  repositionSquare(snake.body[1]);
+}, 2_000);
 function hasHitWall() {
   /* 
     TODO 11: Should return true if the snake's head has collided with the four walls of the
