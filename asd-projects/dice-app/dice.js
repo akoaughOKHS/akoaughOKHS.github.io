@@ -56,6 +56,10 @@ $(document).ready(function () {
   function handleClick() {
     rollDie("#die");
   }
+  function handleClick2() {
+    rollDie("#die2");
+  } 
 
   $("#die").on("click", handleClick);
+  $("#die2").on("click", handleClick2)
 });
