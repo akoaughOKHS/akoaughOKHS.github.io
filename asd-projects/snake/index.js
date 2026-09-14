@@ -114,7 +114,7 @@ function moveSnake() {
     stored in the Array snake.body and each part knows its current 
     column/row properties. 
   */
-  for (let i = snake.body.length - 1; i > 0; i--) {
+  for (var i = snake.body.length - 1; i > 0; i--) {
     var currentSnakeSquare = snake.body[i];
     var snakeSquareInFront = snake.body[i - 1];
 
@@ -211,7 +211,7 @@ function hasCollidedWithSnake() {
     HINT: Each part of the snake's body is stored in the snake.body Array. The
     head and each part of the snake's body also knows its own row and column.
   */
-  for (let i = 1; i <= snake.body.length - 1; i++) {
+  for (var i = 1; i <= snake.body.length - 1; i++) {
     if (
       snake.body[i].row === snake.head.row &&
       snake.body[i].column === snake.head.column
@@ -248,10 +248,14 @@ function endGame() {
  */
 function makeApple() {
   // TODO 4, Part 2: Fill in this function's code block
+  // make the apple jQuery Object and append it to the board
   apple.element = $("<div>").addClass("apple").appendTo(board);
+  // get a random available row/column on the board
   var randomPosition = getRandomAvailablePosition();
+  // initialize the row/column properties on the Apple Object
   apple.row = randomPosition.row;
   apple.column = randomPosition.column;
+  // position the apple on the screen
   repositionSquare(apple);
 }
 
@@ -261,14 +265,23 @@ function makeApple() {
  */
 function makeSnakeSquare(row, column) {
   // TODO 5, Part 2: Fill in this function's code block
+  // initialize a new snakeSquare Object
   const snakeSquare = {};
+
+  // make the snakeSquare element and add it to the board
   snakeSquare.element = $("<div>").addClass("snake").appendTo(board);
+  // assign the row and column position
   snakeSquare.row = row;
   snakeSquare.column = column;
+
+  // set the snake's position visually
   repositionSquare(snakeSquare);
+
+  // if this is the head, give it a unique ID
   if (snake.body.length === 0) {
     snakeSquare.element.attr("id", "snake-head");
   }
+  // add the square to the snake's body and update the tail
   snake.body.push(snakeSquare);
   snake.tail = snakeSquare;
 }
@@ -330,9 +343,8 @@ function getRandomAvailablePosition() {
       not occupied by a snakeSquare in the snake's body. If it is then set 
       spaceIsAvailable to false so that a new position is generated.
     */
-    for (let i = 0; i < snake.body.length; i++) {
-      if (
-        snake.body[i].column === randomPosition.column &&
+    for (var i = 0; i < snake.body.length; i++) {
+      if (snake.body[i].column === randomPosition.column &&
         snake.body[i].row === randomPosition.row
       ) {
         console.log("spot taken");

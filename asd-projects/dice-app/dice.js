@@ -8,7 +8,9 @@ $(document).ready(function () {
     .css("top", 50)
     .css("left", 50)
     .appendTo("#die");
+    
   function makeDot(top, left, elementID) {
+
     $("<div>")
       .css("height", 15)
       .css("width", 15)
@@ -20,6 +22,7 @@ $(document).ready(function () {
   }
 
   function rollDie(dieID) {
+
     $(dieID).empty();
     var randomNum = Math.ceil(Math.random() * 6);
     console.log(randomNum);
@@ -54,9 +57,11 @@ $(document).ready(function () {
   }
 
   function handleClick() {
+
     rollDie("#die");
   }
   function handleClick2() {
+
     rollDie("#die2");
   } 
 
