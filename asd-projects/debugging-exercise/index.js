@@ -10,7 +10,10 @@ $(document).ready(function () {
   var boardWidth = $($board).width();
   var boardHeight = $($board).height();
   var ghosts = [];
-  var ghostRadius = 10;
+  var ghostRadius = 45;
+  // height and width are hardcoded. maunually modify if css is changed.
+  var ghostWidth = 50;
+  var ghostHeight = 50;
   // modify these values if you want faster moving ghosts or a shorter countdown timer
   const FPS = 25;
   const initialDelay = 5_000;
@@ -44,13 +47,16 @@ $(document).ready(function () {
     var ghost = {};
 
     // this creates some useful variables that are not directly placed in the object
-    var maxX = boardWidth - ghostRadius * 2;
-    var maxY = boardHeight - ghostRadius * 2;
+    var maxX = boardWidth - ghostWidth;
+    var maxY = boardHeight - ghostHeight;
 
     // this gives the ghost object all of the data that it needs to store
     ghost.id = "#" + id;
-    ghost.x = Math.random() * maxX + ghostRadius;
-    ghost.y = Math.random() * maxY + ghostRadius;
+    ghost.x = Math.random() * maxX;
+    ghost.width = ghostWidth;
+    ghost.height = ghostHeight;
+    ghost.right = ghost.x + ghost.width;
+    ghost.y = Math.random() * maxY;
     ghost.speedX = decideSpeed();
     ghost.speedY = decideSpeed();
 
@@ -92,6 +98,8 @@ $(document).ready(function () {
       .css("top", ghost.y)
       .addClass("ghost");
 
+    ghostWidth = 50;
+    ghostHeght = 50;
     // this inserts the ghost's HTML into your website
     $ghost.appendTo($board);
   }
@@ -140,7 +148,7 @@ $(document).ready(function () {
       ghost.speedX *= -1;
     }
     // this bounces off the right wall
-    else if (ghost.x > boardWidth) {
+    else if (ghost.right > boardWidth) {
       ghost.x -= ghost.speedX;
       ghost.speedX *= -1;
     }
@@ -150,7 +158,7 @@ $(document).ready(function () {
       ghost.speedY *= -1;
     }
     // this bounces off the bottom wall
-    else if (ghost.y > boardHeight) {
+    else if (ghost.height > boardHeight) {
       ghost.y -= ghost.speedY;
       ghost.speedY *= -1;
     }
@@ -158,8 +166,6 @@ $(document).ready(function () {
 
   // this redraws the ghost's position on the screen
   function updateGhostOnScreen(ghost) {
-  
-
     // these lines redraw the ghost's position
     $(ghost.id).css("left", ghost.x);
     $(ghost.id).css("top", ghost.y);

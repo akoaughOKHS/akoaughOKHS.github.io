@@ -6,7 +6,7 @@ $(document).ready(function () {
     .css("background-color", "black")
     .css("position", "absolute")
     .css("top", 50)
-    .css("left", 50)
+    .css("left", 45)
     .appendTo("#die");
 
     $("<div>")
@@ -15,7 +15,7 @@ $(document).ready(function () {
     .css("background-color", "black")
     .css("position", "absolute")
     .css("top", 50)
-    .css("left", 50)
+    .css("left", 45)
     .appendTo("#die2");
     
   function makeDot(top, left, elementID) {
@@ -36,7 +36,7 @@ $(document).ready(function () {
     if (randomNum === 1) {
       makeDot(50, 50, dieID); // middle middle
     } else if (randomNum === 2) {
-      makeDot(25, 25, dieID); // top left
+      makeDot(15, 25, dieID); // top left
       makeDot(75, 75, dieID); // bottom right
     } else if (randomNum === 3) {
       makeDot(25, 25, dieID); // top left
