@@ -20,7 +20,7 @@ const KEY = {
 
 };
 
-var walker = {
+const walker = {
   x: 0,
   y: 0,
   speedX: 0,
@@ -48,7 +48,7 @@ var walker = {
   */
   function newFrame() {
     repositionGameItem();
-    wallCollision();
+    wallCollisions();
     redrawGameItem();
    
   }
@@ -59,6 +59,12 @@ var walker = {
   
   Note: You can have multiple event handlers for different types of events.
   */
+ 
+  /* This function determines which key has been 
+ pressed down and assigns it a speed 
+ based on that key.
+ */
+
   function handleKeyDown(event) {
     if (event.which === KEY.LEFT) {
        walker.speedX = -5;
@@ -70,6 +76,10 @@ var walker = {
         walker.speedY = 5;
     }
   }
+  /* This function determines which keys have
+  been released from being pressed down and asigns the walkers
+  speed based on the key.*/
+
   function handleKeyUp(event) {
     if (event.which === KEY.LEFT) {
       walker.speedX = 0;
@@ -80,6 +90,7 @@ var walker = {
     } else if (event.which === KEY.UP) {
         walker.speedY = 0;
     }
+    console.log(event.which);
   }
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
@@ -93,10 +104,12 @@ var walker = {
     // turn off event handlers
     $(document).off();
   }
-  
+  /* changes the walkers position by taking the x or 
+  y value and adding its x or y speed*/
   function repositionGameItem () {
     walker.x += walker.speedX;
     walker.y += walker.speedY;
+    console.log(walker.x, walker.y);
   }
 
   function redrawGameItem() {
@@ -105,20 +118,22 @@ var walker = {
   }
 }
 
-function wallCollision() {
-  if (walker.x < 0) {
-    walker.x -= walker.speedX;
-  }
+  function wallCollisions() {
+    walker.right = walker.x + 50;
+    walker.bottom = walker.y + 50;
+    if (walker.x < 0) {
+      walker.x -= walker.speedX;
+    }
 
-  if (walker.right >  $("#board").width()) {
-    walker.x -= walker.speedX;
-  }
+    if (walker.right > $("#board").width()) {
+      walker.x -= walker.speedX;
+    }
 
-  if (walker.y < 0) {
-    walker.y -= walker.speedY;
-  }
+    if (walker.y < 0) {
+     walker.y -= walker.speedY;
+   }
 
-  if (walker.bottom > $("#board").height()) {
-    walker.y -= walker.speedY;
+    if (walker.bottom > $("#board").height()) {
+      walker.y -= walker.speedY;
+    }
   }
-}
