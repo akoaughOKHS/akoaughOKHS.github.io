@@ -147,3 +147,4 @@ function runProgram(){
       walker.y -= walker.speedY;
     }
   }
+}
