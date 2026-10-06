@@ -1,8 +1,8 @@
 /* global $, sessionStorage */
 
 $(document).ready(runProgram); // wait for the HTML / CSS elements of the page to fully load, then execute runProgram()
-  
-function runProgram(){
+
+function runProgram() {
   ////////////////////////////////////////////////////////////////////////////////
   //////////////////////////// SETUP /////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -10,32 +10,32 @@ function runProgram(){
   // Constant Variables
   var FRAME_RATE = 60;
   var FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
-  
+
   // Game Item Objects
-    const walker = {
+  const walker = {
     x: 0,
     y: 0,
     speedX: 0,
-    speedY: 0
+    speedY: 0,
   };
-  
+
   const KEY = {
     LEFT: 37,
-    UP: 38, 
+    UP: 38,
     RIGHT: 39,
-    DOWN: 40
+    DOWN: 40,
   };
   // one-time setup
-  var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
+  var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL); // execute newFrame every 0.0166 seconds (60 Frames per second)
 
   /* 
   This section is where you set up event listeners for user input.
   For example, if you wanted to handle a click event on the document, you would replace 'eventType' with 'click', and if you wanted to execute a function named 'handleClick', you would replace 'handleEvent' with 'handleClick'.
 
   Note: You can have multiple event listeners for different types of events.
-  */                        
-  $(document).on('keydown', handleKeyDown);                          
-  $(document).on('keyup', handleKeyUp);
+  */
+  $(document).on("keydown", handleKeyDown);
+  $(document).on("keyup", handleKeyUp);
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -46,11 +46,12 @@ function runProgram(){
   */
   function newFrame() {
     repositionGameItem();
+
     wallCollisions();
+
     redrawGameItem();
-    
   }
-  
+
   /* 
   This section is where you set up the event handlers for user input.
   For example, if you wanted to make an event handler for a click event, you should rename this function to 'handleClick', then write the code that should execute when the click event occurs.
@@ -68,8 +69,7 @@ function runProgram(){
       walker.speedY = -5;
     }
   }
-  
-  
+
   function handleKeyUp(event) {
     if (event.which === KEY.LEFT) {
       walker.speedX = 0;
@@ -82,12 +82,10 @@ function runProgram(){
     }
   }
 
-
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
 
-  
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
@@ -97,7 +95,7 @@ function runProgram(){
   }
   /* changes the walkers position by taking the x or 
   y value and adding its x or y speed*/
-  function repositionGameItem () {
+  function repositionGameItem() {
     walker.x += walker.speedX;
     walker.y += walker.speedY;
     console.log(walker.x, walker.y);
@@ -109,22 +107,22 @@ function runProgram(){
   }
 }
 
-  function wallCollisions() {
-    walker.right = walker.x +  $("#walker").width();
-    walker.bottom = walker.y + $("#walker").height();
-    if (walker.bottom > $("#board").height()) {
-      walker.y -= walker.speedY;
-    }
-    
-    if (walker.right > $("#board").width()) {
-      walker.x -= walker.speedX;
-    }
-
-    if (walker.y < 0) {
-      walker.y -= walker.speedY;
-    }
-
-    if (walker.x < 0) {
-     walker.x -= walker.speedX ;
-    }
+function wallCollisions() {
+  walker.right = walker.x + $("#walker").width();
+  walker.bottom = walker.y + $("#walker").height();
+  if (walker.bottom > $("#board").height()) {
+    walker.y -= walker.speedY;
   }
+
+  if (walker.y < 0) {
+    walker.y -= walker.speedY;
+  }
+
+  if (walker.right > $("#board").width()) {
+    walker.x -= walker.speedX;
+  }
+
+  if (walker.x < 0) {
+    walker.x -= walker.speedX;
+  }
+}
