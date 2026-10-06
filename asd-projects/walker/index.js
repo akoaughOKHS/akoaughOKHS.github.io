@@ -12,18 +12,29 @@ function runProgram() {
   var FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
 
   // Game Item Objects
-  const walker = {
+  var walker = {
     x: 0,
     y: 0,
     speedX: 0,
     speedY: 0,
   };
 
-  const KEY = {
+  var walker2 = {
+    x: 0,
+    y: 0,
+    speedX: 0,
+    speedY: 0,
+  };
+
+  var KEY = {
     LEFT: 37,
     UP: 38,
     RIGHT: 39,
     DOWN: 40,
+    A: 65,
+    W: 87,
+    D: 68,
+    S: 83,
   };
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL); // execute newFrame every 0.0166 seconds (60 Frames per second)
@@ -68,6 +79,16 @@ function runProgram() {
     } else if (event.which === KEY.UP) {
       walker.speedY = -5;
     }
+
+    if (event.which === KEY.A) {
+      walker2.speedX = -5;
+    } else if (event.which === KEY.W) {
+      walker2.speedY = -5;
+    } else if (event.which === KEY.D) {
+      walker2.speedX = 5;
+    } else if (event.which === KEY.S) {
+      walker2.speedY = 5;
+    }
   }
 
   function handleKeyUp(event) {
@@ -79,6 +100,16 @@ function runProgram() {
       walker.speedX = 0;
     } else if (event.which === KEY.DOWN) {
       walker.speedY = 0;
+    }
+
+    if (event.which === KEY.A) {
+      walker2.speedX = 0;
+    } else if (event.which === KEY.W) {
+      walker2.speedY = 0;
+    } else if (event.which === KEY.D) {
+      walker2.speedX = 0;
+    } else if (event.which === KEY.S) {
+      walker2.speedY = 0;
     }
   }
 
@@ -98,18 +129,22 @@ function runProgram() {
   function repositionGameItem() {
     walker.x += walker.speedX;
     walker.y += walker.speedY;
+    walker2.x += walker2.speedX;
+    walker2.y += walker2.speedY;
     console.log(walker.x, walker.y);
   }
 
   function redrawGameItem() {
     $("#walker").css("left", walker.x);
     $("#walker").css("top", walker.y);
+    $("#walker2").css("left", walker2.x);
+    $("#walker2").css("top", walker2.y);
   }
 }
 
 function wallCollisions() {
-  walker.right = walker.x + $("#walker").width();
   walker.bottom = walker.y + $("#walker").height();
+  walker.right = walker.x + $("#walker").width();
   if (walker.bottom > $("#board").height()) {
     walker.y -= walker.speedY;
   }
@@ -124,5 +159,23 @@ function wallCollisions() {
 
   if (walker.x < 0) {
     walker.x -= walker.speedX;
+  }
+
+  walker2.right = walker2.x + $("#walker2").width();
+  walker2.bottom = walker2.y + $("#walker2").height();
+  if (walker2.bottom > $("#board").height()) {
+    walker2.y -= walker2.speedY;
+  }
+
+  if (walker2.right > $("#board").width()) {
+    walker2.x -= walker2.speedX;
+  }
+
+  if (walker2.y < 0) {
+    walker2.y -= walker2.speedY;
+  }
+
+  if (walker2.x < 0) {
+    walker2.x -= walker2.speedX;
   }
 }
