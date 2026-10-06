@@ -17,13 +17,8 @@ function runProgram(){
     y: 0,
     speedX: 0,
     speedY: 0
-  }
-  const walker2 = {
-    x: 0,
-    y: 0,
-    speedX: 0,
-    speedY: 0
-  }
+  };
+  
   const KEY = {
     LEFT: 37,
     UP: 38, 
@@ -54,7 +49,6 @@ function runProgram(){
     wallCollisions();
     redrawGameItem();
     
-
   }
   
   /* 
@@ -63,49 +57,36 @@ function runProgram(){
   
   Note: You can have multiple event handlers for different types of events.
   */
-  function handleEvent(event) {
+  function handleKeyDown(event) {
     if (event.which === KEY.LEFT) {
-      walker.speedX = 0
-    } else if (event.which === KEY.UP) {
-      walker.speedY = 0
-    } else if (event.which === KEY.RIGHT) {
-      walker.speedX = 0
+      walker.speedX = -5;
     } else if (event.which === KEY.DOWN) {
-      walker.speedY = 0
+      walker.speedY = 5;
+    } else if (event.which === KEY.RIGHT) {
+      walker.speedX = 5;
+    } else if (event.which === KEY.UP) {
+      walker.speedY = -5;
     }
   }
+  
+  
+  function handleKeyUp(event) {
+    if (event.which === KEY.LEFT) {
+      walker.speedX = 0;
+    } else if (event.which === KEY.UP) {
+      walker.speedY = 0;
+    } else if (event.which === KEY.RIGHT) {
+      walker.speedX = 0;
+    } else if (event.which === KEY.DOWN) {
+      walker.speedY = 0;
+    }
+  }
+
 
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
-  function repositionGameItem() {
-    walker.x += walker.speedX;
-    walker.y += walker.speedY;
-  }
 
-  function redrawGameItem() {
-    $("#walker").css("left", walker.x);
-    $("#walker").css("top", walker.y);
-  }
-  function wallCollisions() {
-  // hard coded change manually if css is changed //
-    walker.right = walker.x + 50;
-    walker.bottom = walker.y + 50;
-    if (walker.bottom > $("#board").height()) {
-      walker.y -= walker.speedY
-    }
-
-    if (walker.right > $("#board").width()) {
-      walker.x -= walker.speedX 
-    }
-
-    if (walker.y < 0) {
-      walker.y -= walker.speedY
-    }
-
-    if (walker.x < 0) {
-     walker.x -= walker.speedX 
-    }
   
   function endGame() {
     // stop the interval timer
@@ -129,22 +110,21 @@ function runProgram(){
 }
 
   function wallCollisions() {
-    walker.right = walker.x + 50;
-    walker.bottom = walker.y + 50;
-    if (walker.x < 0) {
-      walker.x -= walker.speedX;
+    walker.right = walker.x +  $("#walker").width();
+    walker.bottom = walker.y + $("#walker").height();
+    if (walker.bottom > $("#board").height()) {
+      walker.y -= walker.speedY;
     }
-
+    
     if (walker.right > $("#board").width()) {
       walker.x -= walker.speedX;
     }
 
     if (walker.y < 0) {
-     walker.y -= walker.speedY;
-   }
-
-    if (walker.bottom > $("#board").height()) {
       walker.y -= walker.speedY;
     }
+
+    if (walker.x < 0) {
+     walker.x -= walker.speedX ;
+    }
   }
-}
