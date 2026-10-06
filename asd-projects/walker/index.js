@@ -69,6 +69,8 @@ function runProgram() {
   
   Note: You can have multiple event handlers for different types of events.
   */
+ 
+  /* This function determines which key has been pressed down and updates its speed based on the key */
   function handleKeyDown(event) {
     if (event.which === KEY.LEFT) {
       walker.speedX = -5;
@@ -90,7 +92,10 @@ function runProgram() {
       walker2.speedY = 5;
     }
   }
-
+  
+  /* This function determines what happens to the walkers speed once the specific is released from its 
+  pressed down postition */
+  
   function handleKeyUp(event) {
     if (event.which === KEY.LEFT) {
       walker.speedX = 0;
@@ -124,8 +129,10 @@ function runProgram() {
     // turn off event handlers
     $(document).off();
   }
+ 
   /* changes the walkers position by taking the x or 
-  y value and adding its x or y speed*/
+  y value and adding its corresponding x or y speed*/
+  
   function repositionGameItem() {
     walker.x += walker.speedX;
     walker.y += walker.speedY;
@@ -134,13 +141,17 @@ function runProgram() {
     console.log(walker.x, walker.y);
   }
 
+  /* This function redraws the walker boxes on the screen */
+  
   function redrawGameItem() {
     $("#walker").css("left", walker.x);
     $("#walker").css("top", walker.y);
     $("#walker2").css("left", walker2.x);
     $("#walker2").css("top", walker2.y);
+    console.log("walker position: walker.x", "walker.y");
   }
-
+  /* This function determines collision between the boxes and game border walls */
+  
   function wallCollisions() {
     walker.bottom = walker.y + $("#walker").height();
     walker.right = walker.x + $("#walker").width();
