@@ -140,42 +140,42 @@ function runProgram() {
     $("#walker2").css("left", walker2.x);
     $("#walker2").css("top", walker2.y);
   }
-}
 
-function wallCollisions() {
-  walker.bottom = walker.y + $("#walker").height();
-  walker.right = walker.x + $("#walker").width();
-  if (walker.bottom > $("#board").height()) {
-    walker.y -= walker.speedY;
-  }
+  function wallCollisions() {
+    walker.bottom = walker.y + $("#walker").height();
+    walker.right = walker.x + $("#walker").width();
+    if (walker.bottom > $("#board").height()) {
+      walker.y -= walker.speedY;
+    }
 
-  if (walker.y < 0) {
-    walker.y -= walker.speedY;
-  }
+    if (walker.y < 0) {
+      walker.y -= walker.speedY;
+    }
 
-  if (walker.right > $("#board").width()) {
-    walker.x -= walker.speedX;
-  }
+    if (walker.right > $("#board").width()) {
+      walker.x -= walker.speedX;
+    }
 
-  if (walker.x < 0) {
-    walker.x -= walker.speedX;
-  }
+    if (walker.x < 0) {
+      walker.x -= walker.speedX;
+    }
 
-  walker2.right = walker2.x + $("#walker2").width();
-  walker2.bottom = walker2.y + $("#walker2").height();
-  if (walker2.bottom > $("#board").height()) {
-    walker2.y -= walker2.speedY;
-  }
+    walker2.right = walker2.x + $("#walker2").width();
+    walker2.bottom = walker2.y + $("#walker2").height();
+    if (walker2.bottom > $("#board").height()) {
+      walker2.y -= walker2.speedY;
+    }
 
-  if (walker2.right > $("#board").width()) {
-    walker2.x -= walker2.speedX;
-  }
+    if (walker2.right > $("#board").width()) {
+      walker2.x -= walker2.speedX;
+    }
 
-  if (walker2.y < 0) {
-    walker2.y -= walker2.speedY;
-  }
+    if (walker2.y < 0) {
+      walker2.y -= walker2.speedY;
+    }
 
-  if (walker2.x < 0) {
-    walker2.x -= walker2.speedX;
+    if (walker2.x < 0) {
+      walker2.x -= walker2.speedX;
+    }
   }
 }
