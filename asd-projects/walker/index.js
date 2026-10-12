@@ -26,6 +26,8 @@ function runProgram() {
     speedY: 0,
   };
 
+  /* holds the magic numbers for each key allowing 
+  the event.which property to properly work when determining which key is being pressed */
   var KEY = {
     LEFT: 37,
     UP: 38,
@@ -153,7 +155,7 @@ function runProgram() {
   /* This function determines collision between the boxes and game border walls */
   
   function wallCollisions() {
-    walker.bottom = walker.y + $("#walker").height();
+    walker.bottom = walker.y + $("#walker").heightg();
     walker.right = walker.x + $("#walker").width();
     if (walker.bottom > $("#board").height()) {
       walker.y -= walker.speedY;
