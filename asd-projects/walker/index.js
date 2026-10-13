@@ -71,7 +71,7 @@ function runProgram() {
   
   Note: You can have multiple event handlers for different types of events.
   */
- 
+
   /* This function determines which key has been pressed down and updates its speed based on the key */
   function handleKeyDown(event) {
     if (event.which === KEY.LEFT) {
@@ -94,28 +94,20 @@ function runProgram() {
       walker2.speedY = 5;
     }
   }
-  
+
   /* This function determines what happens to the walkers speed once the specific is released from its 
   pressed down postition */
-  
+
   function handleKeyUp(event) {
-    if (event.which === KEY.LEFT) {
+    if (event.which === KEY.LEFT || event.which === KEY.RIGHT) {
       walker.speedX = 0;
-    } else if (event.which === KEY.UP) {
-      walker.speedY = 0;
-    } else if (event.which === KEY.RIGHT) {
-      walker.speedX = 0;
-    } else if (event.which === KEY.DOWN) {
+    } else if (event.which === KEY.UP || event.which === KEY.DOWN) {
       walker.speedY = 0;
     }
 
-    if (event.which === KEY.A) {
+    if (event.which === KEY.A || event.which === KEY.D) {
       walker2.speedX = 0;
-    } else if (event.which === KEY.W) {
-      walker2.speedY = 0;
-    } else if (event.which === KEY.D) {
-      walker2.speedX = 0;
-    } else if (event.which === KEY.S) {
+    } else if (event.which === KEY.W || event.which === KEY.S) {
       walker2.speedY = 0;
     }
   }
@@ -131,10 +123,10 @@ function runProgram() {
     // turn off event handlers
     $(document).off();
   }
- 
+
   /* changes the walkers position by taking the x or 
   y value and adding its corresponding x or y speed*/
-  
+
   function repositionGameItem() {
     walker.x += walker.speedX;
     walker.y += walker.speedY;
@@ -144,7 +136,7 @@ function runProgram() {
   }
 
   /* This function redraws the walker boxes on the screen */
-  
+
   function redrawGameItem() {
     $("#walker").css("left", walker.x);
     $("#walker").css("top", walker.y);
@@ -153,41 +145,26 @@ function runProgram() {
     console.log("walker position: walker.x", "walker.y");
   }
   /* This function determines collision between the boxes and game border walls */
-  
+
   function wallCollisions() {
-    walker.bottom = walker.y + $("#walker").heightg();
+    walker.bottom = walker.y + $("#walker").height();
     walker.right = walker.x + $("#walker").width();
-    if (walker.bottom > $("#board").height()) {
+
+    if (walker.bottom > $("#board").height() || walker.y < 0) {
       walker.y -= walker.speedY;
     }
 
-    if (walker.y < 0) {
-      walker.y -= walker.speedY;
-    }
-
-    if (walker.right > $("#board").width()) {
+    if (walker.right > $("#board").width() || walker.x < 0) {
       walker.x -= walker.speedX;
     }
 
-    if (walker.x < 0) {
-      walker.x -= walker.speedX;
-    }
-
-    walker2.right = walker2.x + $("#walker2").width();
     walker2.bottom = walker2.y + $("#walker2").height();
-    if (walker2.bottom > $("#board").height()) {
+    walker2.right = walker2.x + $("#walker2").width();
+
+    if (walker2.bottom > $("#board").height() || walker2.y < 0) {
       walker2.y -= walker2.speedY;
     }
-
-    if (walker2.right > $("#board").width()) {
-      walker2.x -= walker2.speedX;
-    }
-
-    if (walker2.y < 0) {
-      walker2.y -= walker2.speedY;
-    }
-
-    if (walker2.x < 0) {
+    if (walker2.right > $("#board").width() || walker2.x < 0) {
       walker2.x -= walker2.speedX;
     }
   }
