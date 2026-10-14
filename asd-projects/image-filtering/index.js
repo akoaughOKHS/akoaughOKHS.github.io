@@ -36,6 +36,7 @@ function applyAndRender() {
 /////////////////////////////////////////////////////////
 
 // TODO 1, 2, 3 & 5: Create the applyFilter function here
+/* Applies the desired and chosen filter to the image*/
 function applyFilter(filterFunction) {
   for (var r = 0; r < image.length; r++) {
     var row = image[r];
@@ -50,6 +51,7 @@ function applyFilter(filterFunction) {
   }
 }
 // TODO 9 Create the applyFilterNoBackground function
+/* Applies the filter without effecting the background*/
 function applyFilterNoBackground(filterFunction) {
   var backgroundColor = image[0][0]; 
   for (var i = 0; i < image.length; i++) {
@@ -67,25 +69,30 @@ function applyFilterNoBackground(filterFunction) {
 }
 
 // TODO 6: Create the keepInBounds function
+/* keeps the rgb value within the limits of 0 too 225*/
 function keepInBounds(num) {
   return num < 0 ? 0 : num > 225 ? 225 : num;
 }
 // TODO 4: Create reddify filter function
+/* creates the red filter by increasing the red rgb value*/
 function reddify(pixelArray) {
   pixelArray[RED] = 200;
 }
 
 // TODO 7 & 8: Create more filter functions
+/* decreases the amount of blue */
 function decreaseBlue(pixelArray) {
   pixelArray[BLUE] -= 50;
   keepInBounds(pixelArray[BLUE]);
 }
-
+/* increases the amount of green by adding the current 
+amount of blue*/
 function increaseGreenByBlue(pixelArray) {
   pixelArray[GREEN] += pixelArray[BLUE];
   keepInBounds(pixelArray[GREEN]);
 }
 // CHALLENGE code goes below here
+/* inverts the color of the image*/
 function invertColor(pixelArray) {
   pixelArray[RED] = 255 - pixelArray[RED];
   pixelArray[GREEN] = 255 - pixelArray[GREEN];
@@ -95,6 +102,7 @@ function invertColor(pixelArray) {
   keepInBounds(pixelArray[BLUE]);
 }
 
+/* creates the purple filter by increasing the red and blue rgb values*/
 function makePurple(pixelArray) {
   pixelArray[BLUE] += pixelArray[RED];
   pixelArray[GREEN] = 225 - pixelArray[GREEN]
