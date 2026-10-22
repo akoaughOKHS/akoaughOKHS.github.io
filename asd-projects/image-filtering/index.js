@@ -36,13 +36,13 @@ function applyAndRender() {
 /////////////////////////////////////////////////////////
 
 // TODO 1, 2, 3 & 5: Create the applyFilter function here
-/* Applies the desired and chosen filter to the image*/
+/* Applies the desired filters to the image*/
 function applyFilter(filterFunction) {
-  for (var r = 0; r < image.length; r++) {
+  for (let r = 0; r < image.length; r++) {
     var row = image[r];
-    for (var c = 0; c < row.length; c++ ) {
+    for (let c = 0; c < row.length; c++) {
       var pixel = row[c];
-      var pixelArray =  rgbStringToArray(pixel);
+      var pixelArray = rgbStringToArray(pixel);
       //This is where I'll modify the color values later
       filterFunction(pixelArray);
       var updatedPixel = rgbArrayToString(pixelArray);
@@ -51,18 +51,18 @@ function applyFilter(filterFunction) {
   }
 }
 // TODO 9 Create the applyFilterNoBackground function
-/* Applies the filter without effecting the background*/
+/* Applies the filters without affecting the background*/
 function applyFilterNoBackground(filterFunction) {
-  var backgroundColor = image[0][0]; 
+  var backgroundColor = image[0][0];
   for (var i = 0; i < image.length; i++) {
     var value = image[i];
-    for (var j = 0; j < value.length; j++) {
+    for (let j = 0; j < value.length; j++) {
       if (value[j] !== backgroundColor) {
         var pixel = value[j];
-      var pixelArray =  rgbStringToArray(pixel);
-      filterFunction(pixelArray);
-      var updatedPixel = rgbArrayToString(pixelArray);
-      value[j] = updatedPixel;
+        var pixelArray = rgbStringToArray(pixel);
+        filterFunction(pixelArray);
+        var updatedPixel = rgbArrayToString(pixelArray);
+        value[j] = updatedPixel;
       }
     }
   }
@@ -80,13 +80,13 @@ function reddify(pixelArray) {
 }
 
 // TODO 7 & 8: Create more filter functions
-/* decreases the amount of blue */
+/* decreases the amount of blue in the image */
 function decreaseBlue(pixelArray) {
   pixelArray[BLUE] -= 50;
   keepInBounds(pixelArray[BLUE]);
 }
-/* increases the amount of green by adding the current 
-amount of blue*/
+/* increases the amount of green in the 
+image by adding the current amount of blue to it*/
 function increaseGreenByBlue(pixelArray) {
   pixelArray[GREEN] += pixelArray[BLUE];
   keepInBounds(pixelArray[GREEN]);
@@ -102,10 +102,11 @@ function invertColor(pixelArray) {
   keepInBounds(pixelArray[BLUE]);
 }
 
-/* creates the purple filter by increasing the red and blue rgb values*/
+/* creates the purple filter by increasing the red and blue rgb values 
+while decreasing the green*/
 function makePurple(pixelArray) {
   pixelArray[BLUE] += pixelArray[RED];
-  pixelArray[GREEN] = 225 - pixelArray[GREEN]
+  pixelArray[GREEN] = 225 - pixelArray[GREEN];
   keepInBounds(pixelArray[BLUE]);
   keepInBounds(pixelArray[RED]);
   keepInBounds(pixelArray[GREEN]);
