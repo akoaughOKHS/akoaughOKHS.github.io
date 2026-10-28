@@ -74,7 +74,7 @@ function keepInBounds(num) {
   return num < 0 ? 0 : num > 225 ? 225 : num;
 }
 // TODO 4: Create reddify filter function
-/* creates the red filter by increasing the red rgb value*/
+/*This function sets every affected pixel to 200*/
 function reddify(pixelArray) {
   pixelArray[RED] = 200;
 }
@@ -83,13 +83,13 @@ function reddify(pixelArray) {
 /* decreases the amount of blue in the image */
 function decreaseBlue(pixelArray) {
   pixelArray[BLUE] -= 50;
-  keepInBounds(pixelArray[BLUE]);
+  pixelArray[BLUE] = keepInBounds(pixelArray[BLUE]);
 }
 /* increases the amount of green in the 
 image by adding the current amount of blue to it*/
 function increaseGreenByBlue(pixelArray) {
   pixelArray[GREEN] += pixelArray[BLUE];
-  keepInBounds(pixelArray[GREEN]);
+  pixelArray[GREEN] = keepInBounds(pixelArray[GREEN]);
 }
 // CHALLENGE code goes below here
 /* inverts the color of the image*/
