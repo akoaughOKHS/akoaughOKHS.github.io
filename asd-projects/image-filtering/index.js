@@ -74,7 +74,7 @@ function keepInBounds(num) {
   return num < 0 ? 0 : num > 225 ? 225 : num;
 }
 // TODO 4: Create reddify filter function
-/*This function sets every affected pixel to 200*/
+/*This function sets every affected pixels red value  to 200*/
 function reddify(pixelArray) {
   pixelArray[RED] = 200;
 }
